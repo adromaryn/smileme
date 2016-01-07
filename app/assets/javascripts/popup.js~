@@ -1,0 +1,9 @@
+$(document).ready(function(){
+    PopUpHide();
+});
+function PopUpShow(){
+    $("#popup-bg").show();
+}
+function PopUpHide(){
+    $("#popup-bg").hide();
+}

@@ -1,0 +1,7 @@
+.info-container
+  %p#login
+    -if @user == current_user
+      .changeable
+        = @user.login
+        %a{href: "javascript:PopUpHide()"}
+          Hide popup
