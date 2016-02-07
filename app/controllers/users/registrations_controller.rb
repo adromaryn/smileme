@@ -11,7 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     login = Haikunator.haikunate
     params = sign_up_params
-    params[:login]=login
+    params[:login] = login
+    params[:about] = "Newable guy"
     build_resource(params)
 
     resource.save

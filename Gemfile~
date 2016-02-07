@@ -11,13 +11,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
-gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '3.5.3'
 gem 'haml', '4.0.7'
 gem 'angular-rails', '0.0.12'
-gem 'angular-ui-bootstrap-rails', '0.14.3'
 gem 'haikunator'
 
 # Use Unicorn as the app server

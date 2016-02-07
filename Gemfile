@@ -17,6 +17,7 @@ gem 'devise', '3.5.3'
 gem 'haml', '4.0.7'
 gem 'angular-rails', '0.0.12'
 gem 'haikunator'
+gem 'carrierwave', '0.10.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

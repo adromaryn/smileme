@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :posts
   devise_for :users, controllers: {
     confirmations: "users/confirmations",
     passwords:     "users/passwords",
@@ -10,4 +9,7 @@ Rails.application.routes.draw do
   root 'users#me'
   
   get 'users/:id' => 'users#show', as: 'user'
+  post '/users/login' => 'users#login'
+  get '/about' => 'users#get_about'
+  post '/users/about' => 'users#about'
 end

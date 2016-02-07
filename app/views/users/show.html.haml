@@ -1,16 +1,14 @@
 .info-container
-  %p#login
-    -if @user == current_user
-      .changeable
-        :javascript
-          str = `
-          <form id="user-form">
-            <h1>Смена логина</h1>
-            <br>
-            <input type="text" name="login"></input>
-            <br>
-            <input type="submit" class="button-default" value = "Обновить" name="commit"></input>
-          </form>
-          `;
-        #login{onclick: 'PopUpShow(str)'}
-          = @user.login
+  -if @user == current_user
+    .changeable
+      #login
+        = @user.login
+      #login-form
+        %input{type: "text"}
+      %strong About:
+      %pre#about
+      #about-form
+        %textarea
+  -else
+    #login
+      = @user.login

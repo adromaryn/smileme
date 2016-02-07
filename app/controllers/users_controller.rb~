@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :authenticate_user!, except: :coords
+  before_action :authenticate_user!
   
   def show
     @user=User.find(params[:id])
@@ -8,5 +8,27 @@ class UsersController < ApplicationController
   
   def me
     redirect_to current_user
+  end
+  
+  def login
+    login = params[:login]
+    if request.xhr?
+    	current_user.login = login
+      current_user.save
+      render :json => {
+        login: current_user.login
+      }
+     end
+  end
+  
+  def about
+    login = params[:about]
+    if request.xhr?
+    	current_user.about = about
+      current_user.save
+      render :json => {
+        about: current_user.about
+      }
+    end
   end
 end

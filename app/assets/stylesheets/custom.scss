@@ -57,6 +57,13 @@ pre {
   background-color: #dfd;
   border: none;
   border-left: 20px solid #2c2;
+  margin-top: 5px;
+  .close{
+    &:hover{
+      color:black;
+      cursor: pointer;
+    }
+  }
 }
 
 #error_explanation, #notice{
@@ -69,15 +76,19 @@ pre {
 }
 
 main{
+  margin-top:60px;
   a {
     color: #666;
   }
 }
 
 header{
+  position:fixed;
   background-color: #449;
-  margin: -5px;
-  min-height:50px;
+  top:0px;
+  left:0px;
+  height:50px;
+  width:100%;
 
   nav {
     position: absolute;
@@ -86,11 +97,11 @@ header{
     padding:10px 20px;
   
     a {
-      color:white;
+      opacity:0.5;
       margin:4px;
       padding:5px;
       &:hover{
-        font-weight: bold;
+        opacity:1;
       }
     }
   }
@@ -147,6 +158,30 @@ header{
   font-size: 20px;
 }
 
+#login-form input[type="text"]{
+  border: none;
+  font-size:20px;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+pre#about {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  background-color: white;
+  margin:0px;
+  padding: 0px;
+}
+
+#about-form textarea{
+  height:80px;
+  width:400px;
+  resize:vertical;
+  border:none;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:13px;
+  line-height: 18px;
+}
 #popup-bg{
     width:100%;
     min-height:100%;
