@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user=User.find(params[:id])
+    @posts = @user.posts.paginate(:page => params[:page]).order('created_at DESC')
   end
   
   def me
@@ -23,8 +24,9 @@ class UsersController < ApplicationController
   
   def get_about
     if request.xhr?
+    	user = User.find(params[:id])
       render :json => {
-        about: current_user.about
+        about: user.about
       }
     end
   end
@@ -39,5 +41,15 @@ class UsersController < ApplicationController
         about: current_user.about
       }
     end
+  end
+  
+  def avatar
+    current_user.update(avatar_param)
+    redirect_to root_path
+  end
+  
+  private
+  def avatar_param
+    params.require(:user).permit(:avatar)
   end
 end

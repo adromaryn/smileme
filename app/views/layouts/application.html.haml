@@ -1,5 +1,5 @@
 !!!
-%html{ data: {'ng-app' => 'app'} }
+%html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Smileme
@@ -20,6 +20,8 @@
         #notice
           %em.close ×
           =notice
+      -if flash[:error]
+        #error
+          %em.close ×
+          = flash[:error]
       = yield
-    #popup-bg
-      #popup-content

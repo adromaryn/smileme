@@ -1,4 +1,13 @@
 $(document).ready(function(){
+	$('.ava-submit').hide();
+  $('#avatar + img').click(function(e) {
+  		$('#avatar').trigger('click');
+  });
+  
+	$('#avatar').change(function(e) {
+	  $('.ava-submit').show();
+  });
+  
   $(".changeable > #login-form").hide();
   
   $(".changeable > #login").click(function(e) {
@@ -29,7 +38,9 @@ $(document).ready(function(){
       }
     });
   }
-  GetAbout();
+  if ($("#about").length) {
+    GetAbout();
+  }
   $(".changeable > #about-form").hide();
   
   $(".changeable > #about").click(function(e) {
@@ -55,14 +66,48 @@ $(document).ready(function(){
     }); 
   }
   function GetAbout(){
+  	url = location.protocol + '//' + location.host + location.pathname + '/about'
     $.ajax({
       type: "GET",
-      url: '/about',
+      url: url,
       dataType: "json",
       success: function(data) {
-      	$(".changeable > pre#about").append(data.about);
-      	$(".changeable > #about-form textarea").val(data.about);
+      	$("pre#about").append(data.about);
+      	$("#about-form textarea").val(data.about);
       }
     });
   }
+  $(".new-post").hide();
+  $("#new-pic-button").click(function(e) {
+  		$(".new-post").hide();
+  		$("#new-pic").show();
+  });
+  
+  $("#new-video-button").click(function(e) {
+  		$(".new-post").hide();
+  		$("#new-video").show();
+  });
+  
+  $("body").click( function(e){
+    if($(e.target).parents('.download-button').length != 1 && 
+            e.target.className != "download-button" &&
+            $(e.target).parents('.new-post').length != 1 &&
+            e.target.className != "new-post")
+    {
+      $('.new-post').hide();
+    }
+    if($(e.target).parents('.ava-submit').length != 1 && 
+            e.target.className != 'ava-submit')
+    {
+    	console.log($(e.target).parents('.ava-submit'));
+      $('.ava-submit').hide();
+    }
+  });
+  $('.inputfile').change(function(e) {
+  		str = $('.inputfile').val();
+  		if (str.length > 15) {
+  			str = str.slice(0,12)+"...";
+  		}
+  		$('.inputfile + label').text(str);
+  });
 });
