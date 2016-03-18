@@ -1,0 +1,12 @@
+var url = location.protocol + '//' + location.host + location.pathname + '/login';
+$.ajax({
+  type: "GET",
+  url: url,
+  dataType: "json",
+  success: function(data) {
+    $("#login-text").html(data.login);
+    $(".changeable #login").val(data.login);
+  }
+});
+$(".changeable > #login-form").hide();
+$(".changeable > #login-text").show();

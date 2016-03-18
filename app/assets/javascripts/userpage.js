@@ -1,82 +1,74 @@
 $(document).ready(function(){
 	$('.ava-submit').hide();
-  $('#avatar + img').click(function(e) {
+  $('#avatar-image').click(function(e) {
   		$('#avatar').trigger('click');
   });
   
-	$('#avatar').change(function(e) {
+	$('.changeable form').on("change", '#avatar', function(e) {
 	  $('.ava-submit').show();
   });
   
+  if ($("#login-text").length) {
+    GetLogin();
+  }
+  
   $(".changeable > #login-form").hide();
   
-  $(".changeable > #login").click(function(e) {
-  	str = $(".changeable > #login").text();
-  	str = str.replace(/\s+/g, '');
-  	$(".changeable > #login-form input").val(str);
-    $(".changeable > #login").hide();
+  $(".changeable > #login-text").click(function(e) {
+    $(".changeable > #login-text").hide();
     $(".changeable > #login-form").show();
-    $(".changeable > #login-form input").focus();
-  });
-  $(".changeable > #login-form input").keydown(function() {
-    $(".changeable > #login-form input").val($(".changeable > #login-form input").val().replace(/\s+/g,''));
-  });
-  $(".changeable > #login-form input").focusout(function() {
-    SetLogin();
+    $(".changeable #login").focus();
   });
   function SetLogin(){
-  	str=$(".changeable > #login-form input").val();
+  	var str=$(".changeable #login").val();
     $.ajax({
       type: "POST",
       url: '/users/login',
       data: {"login":str},
       dataType: "json",
       success: function(data) {
-      	$(".changeable > #login").text(data.login);
+      	$(".changeable > #login-text").text(data.login);
       	$(".changeable > #login-form").hide();
-        $(".changeable > #login").show();
+        $(".changeable > #login-text").show();
       }
     });
   }
-  if ($("#about").length) {
-    GetAbout();
-  }
-  $(".changeable > #about-form").hide();
-  
-  $(".changeable > #about").click(function(e) {
-    $(".changeable > #about").hide();
-    $(".changeable > #about-form").show();
-    $(".changeable > #about-form textarea").focus();
-  });
-  $(".changeable > #about-form textarea").focusout(function() {
-    SetAbout();
-  });
-  function SetAbout(){
-  	str=$(".changeable > #about-form textarea").val();
-    $.ajax({
-      type: "POST",
-      url: '/users/about',
-      data: {"about":str},
-      dataType: "json",
-      success: function(data) {
-      	$(".changeable > #about").text(data.about);
-      	$(".changeable > #about-form").hide();
-        $(".changeable > #about").show();
-      }
-    }); 
-  }
-  function GetAbout(){
-  	url = location.protocol + '//' + location.host + location.pathname + '/about'
+  function GetLogin(){
+  	var url = location.protocol + '//' + location.host + location.pathname + '/login';
     $.ajax({
       type: "GET",
       url: url,
       dataType: "json",
       success: function(data) {
-      	$("pre#about").append(data.about);
+      	$("#login-text").html(data.login);
+      	$(".changeable #login").val(data.login);
+      }
+    });
+  }
+  if ($("#about-text").length) {
+    GetAbout();
+  }
+  $(".changeable > #about-form").hide();
+  
+  $(".changeable > #about-text").click(function(e) {
+    $(".changeable > #about-text").hide();
+    $(".changeable > #about-form").show();
+    $(".changeable > #about-form textarea").focus();
+  });
+  
+  function GetAbout(){
+  	var url = location.protocol + '//' + location.host + location.pathname + '/about';
+    $.ajax({
+      type: "GET",
+      url: url,
+      dataType: "json",
+      success: function(data) {
+      	$("#about-text").html(data.about);
       	$("#about-form textarea").val(data.about);
       }
     });
   }
+
   $(".new-post").hide();
   $("#new-pic-button").click(function(e) {
   		$(".new-post").hide();
@@ -99,15 +91,17 @@ $(document).ready(function(){
     if($(e.target).parents('.ava-submit').length != 1 && 
             e.target.className != 'ava-submit')
     {
-    	console.log($(e.target).parents('.ava-submit'));
       $('.ava-submit').hide();
     }
   });
   $('.inputfile').change(function(e) {
-  		str = $('.inputfile').val();
+  		var str = $('.inputfile').val();
   		if (str.length > 15) {
   			str = str.slice(0,12)+"...";
   		}
   		$('.inputfile + label').text(str);
   });
+  if (! $(".pagination a").length) {
+  	$(".pagination").hide();
+  }
 });

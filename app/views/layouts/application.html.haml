@@ -10,6 +10,7 @@
     %header
       %nav
         - if user_signed_in?
+          %input{type: "text", class: "search"}
           = link_to image_tag("/assets/home.png"), current_user
           = link_to image_tag("/assets/logout.png"), destroy_user_session_path, method: :delete
         -else

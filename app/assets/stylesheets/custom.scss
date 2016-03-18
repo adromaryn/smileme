@@ -92,6 +92,7 @@ main{
 
 header{
   position:fixed;
+  z-index: 10;
   background-color: #449;
   top:0px;
   left:0px;
@@ -103,7 +104,6 @@ header{
     vertical-align: middle;
     right:10px;
     padding:10px 20px;
-  
     a {
       opacity:0.5;
       margin:4px;
@@ -111,6 +111,44 @@ header{
       &:hover{
         opacity:1;
       }
+    }
+  }
+  
+  .search {
+    width: 200px;
+    vertical-align: middle;
+    margin-bottom:20px;
+    background-image: url(/assets/search.png);
+    background-repeat:no-repeat;
+    background-position:6px;
+  }
+}
+
+#qsearch-res {
+  position:fixed;
+  z-index: 20;
+  border: 1px solid #eee;
+  background-color:#fafaff;
+  padding:0px;
+  bpx-sizing: border-box;
+  strong, p{
+    display: block;
+    padding:5px 20px;
+    margin: 0;
+  }
+  a{
+    display: block;
+    position: relative;
+    padding: 5px;
+    margin:0;
+    font-size:12px;
+    color: #222;
+    &:hover{
+      background-color: #f0f0ff;
+    }
+    span{
+      display: inline-block;
+      margin:0px 10px;
     }
   }
 }
@@ -150,6 +188,7 @@ header{
   border-radius:0px;
   -moz-border-radius:0px;
   -webkit-border-radius:0px;
+  -o-border-radius:0px;
   &:hover{
     background-color:#55b;
     cursor: pointer;
@@ -163,8 +202,13 @@ header{
   width:600px;
 }
 
-#login {
+#login-text {
+  display: inline-block;
+  max-width:500px;
+  word-wrap:break-word;
   font-size: 20px;
+  margin-top:10px;
+  margin-bottom:20px;
 }
 
 #login-form input[type="text"]{
@@ -173,7 +217,18 @@ header{
   font-family: verdana, arial, helvetica, sans-serif;
 }
 
-pre#about {
+#login-form input[type="submit"]{
+  display: inline;
+}
+
+pre#about-text {
+  display: inline-block;
+  max-width:500px;
+  white-space: pre-wrap;       /* CSS 3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -227,7 +282,8 @@ pre#about {
 	z-index: -1;
 }
 
-#avatar + img {
+#avatar-image {
+  display: inline-block;
   cursor: pointer;
 }
 
@@ -280,7 +336,7 @@ iframe {
   }
 }
 
-.paginate {
+.pagination {
   margin:10px auto;
   width: 600px;
   padding:20px;
@@ -297,3 +353,21 @@ iframe {
     background:#ccf;
   }
 }
+
+.post .close{
+  position: absolute;
+  top:10px;
+  right: 10px;
+  font-size: 50px;
+  cursor: pointer;
+  color: #ddd;
+  &:hover{
+    color:black;
+  }
+}
+
+.post .info-container {
+  position: relative;
+  z-index: 1;
+}
+

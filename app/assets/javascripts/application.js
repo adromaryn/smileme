@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
-//= require angular-resource
-//= require controllers
+//= require jquery.remotipart
 //= require_tree .

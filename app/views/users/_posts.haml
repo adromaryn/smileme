@@ -1,0 +1,31 @@
+= will_paginate @posts, id: 'pag1'
+-for post in @posts
+  .post
+    .ava-thumb
+      = link_to(image_tag(@user.avatar.url(:thumb)), @user)
+    .info-container
+      -if post.pic_post
+        = link_to post.pic_post.title, post, class: "title"
+        %br/
+        = image_tag post.pic_post.image.url(:medium)
+        %br/
+        -if post.pic_post.definition != ""
+          %p 
+            = post.pic_post.definition
+          %br/
+      -if post.video_post
+        - c = Conred::Video.new(video_url: post.video_post.link, width: 285, height: 185,error_message: "Video url is invalid")
+        = link_to post.video_post.title, post, class: "title"
+        %br/
+        = c.code.html_safe
+        %br/
+        -if post.video_post.definition != ""
+          %p 
+            = post.video_post.definition
+          %br/
+      %i
+        = post.created_at.to_formatted_s :db
+      %br/
+      -if @user == current_user
+        %em.close{data: {id: post.id}} ×
+= will_paginate @posts, id: 'pag2'

@@ -1,0 +1,12 @@
+var url = location.protocol + '//' + location.host + location.pathname + '/about';
+$.ajax({
+  type: "GET",
+  url: url,
+  dataType: "json",
+  success: function(data) {
+    $("#about-text").html(data.about);
+    $("#about-form textarea").val(data.about);
+  }
+});
+$(".changeable > #about-form").hide();
+$(".changeable > #about-text").show();

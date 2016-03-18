@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :only => [:avatar]
   
   def show
     @user=User.find(params[:id])
@@ -14,12 +15,22 @@ class UsersController < ApplicationController
   def login
     login = params[:login]
     if request.xhr?
+    	login = "Anonimous" if  login.tr(" \n\t", '') == ""
     	current_user.login = login
       current_user.save
-      render :json => {
-        login: current_user.login
-      }
+      respond_to do |format|
+        format.js {render file: 'users/login'}
+      end
      end
+  end
+  
+  def get_login
+    if request.xhr?
+    	user = User.find(params[:id])
+      render :json => {
+        login: user.login
+      }
+    end
   end
   
   def get_about
@@ -37,19 +48,18 @@ class UsersController < ApplicationController
     	about = "Silent Bob" if  about.tr(" \n\t", '') == ""
     	current_user.about = about
       current_user.save
-      render :json => {
-        about: current_user.about
-      }
+      respond_to do |format|
+        format.js {render file: 'users/about'}
+      end
     end
   end
   
   def avatar
-    current_user.update(avatar_param)
-    redirect_to root_path
-  end
-  
-  private
-  def avatar_param
-    params.require(:user).permit(:avatar)
+    current_user.avatar = params[:avatar]
+    current_user.save
+    @user = current_user
+    respond_to do |format|
+      format.js
+    end
   end
 end

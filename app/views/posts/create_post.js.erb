@@ -1,0 +1,12 @@
+$("#posts").html("<%= escape_javascript(render("users/posts")) %>");
+pag = $("#pag1").html();
+while (pag.search("posts/new_pic") != -1) {
+  pag = pag.replace("posts/new_pic", "users/<%= @user.id %>");
+}
+$("#pag1").html(pag);
+pag = $("#pag2").html();
+while (pag.search("posts/new_pic") != -1) {
+  pag = pag.replace("posts/new_pic", "users/<%= @user.id %>");
+}
+$("#pag2").html(pag);
+$(".new-post").hide();

@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show', as: 'user'
   post '/users/login' => 'users#login'
   get 'users/:id/about' => 'users#get_about'
+  get 'users/:id/login' => 'users#get_login'
   post '/users/about' => 'users#about'
-  post '/avatar' => 'users#avatar', as: 'avatar'
+  post '/avatar' => 'users#avatar', as: 'avatar', defaults: { format: 'js' }
   
-  post 'posts/new_pic' => 'posts#create_pic_post', as: 'new_pic_post'
-  post 'posts/new_video' => 'posts#create_video_post', as: 'new_video_post'
+  post 'posts/new_pic' => 'posts#create_pic_post', as: 'new_pic_post', defaults: { format: 'js' }
+  post 'posts/new_video' => 'posts#create_video_post', as: 'new_video_post', defaults: { format: 'js' }
   get 'posts/id:id' => 'posts#show', as: 'post'
   delete '/posts/id:id' => 'posts#destroy'
+  
+  get '/search/quick' => 'search#quick', as: 'qsearch'
+  get '/search/' => 'search#index', as: 'search'
 end
