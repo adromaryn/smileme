@@ -1,0 +1,97 @@
+#posts, #comments img{
+  padding: 10px 0px;
+}
+
+iframe {
+  padding:10px 0px;
+}
+
+.ava-thumb{
+  width:70px;
+}
+
+.post, .comment {
+  margin:20px auto;
+  padding:0;
+  width:640px;
+  .info-container{
+    margin:0;
+  }
+}
+
+.pagination {
+  margin:10px auto;
+  width: 600px;
+  padding:20px;
+  font-size: 14px;
+  span, em, a{
+    background: #fff;
+    border:1px solid #ccf;
+    padding:10px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:0px;
+  }
+  a:hover{
+    background:#ccf;
+  }
+}
+
+.post { 
+  .close{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    font-size: 50px;
+    cursor: pointer;
+    color: #ddd;
+    &:hover{
+      color:black;
+    }
+  }
+
+  .info-container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .title, pre {
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: normal;
+    display: block;
+    margin:0px;
+    max-width: 550px;
+  }
+  
+  a.title{
+    text-decoration: underline;
+    color: blue;
+  }
+}
+
+#comment_text{
+  width: 550px;
+  height: 50px;
+  resize: vertical;
+}
+
+.comment pre {
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+span.close{
+  color: #666;
+  cursor: pointer;
+}

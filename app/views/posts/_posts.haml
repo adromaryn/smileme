@@ -10,7 +10,7 @@
         = image_tag post.pic_post.image.url(:medium)
         %br/
         -if post.pic_post.definition != ""
-          %p 
+          %pre
             = post.pic_post.definition
           %br/
       -if post.video_post

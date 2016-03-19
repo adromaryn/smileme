@@ -1,0 +1,15 @@
+= will_paginate @comments, id: 'pag1'
+-for comment in @comments
+  .comment
+    .ava-thumb
+      = link_to(image_tag(comment.user.avatar.url(:thumb)), @user)
+    .info-container
+      %pre
+        = comment.text
+      %br/
+      %i
+        = comment.created_at.to_formatted_s :db
+      %br/
+      -if comment.user == current_user
+        %span.close{data: {id: comment.id}} Delete
+= will_paginate @comments, id: 'pag2'

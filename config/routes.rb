@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'posts/id:id' => 'posts#show', as: 'post'
   delete '/posts/id:id' => 'posts#destroy'
   
+  post 'posts/id:id' => 'comments#create', as: 'new_comment', defaults: { format: 'js'}
+  delete '/comments/id:id' => 'comments#destroy', as: 'comments'
+  
   get '/search/quick' => 'search#quick', as: 'qsearch'
   get '/search/' => 'search#index', as: 'search'
 end

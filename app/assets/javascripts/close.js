@@ -18,5 +18,18 @@ $(document).ready(function(){
   	});
   	return false;
   });
+  $("#comments").on("click", ".comment .close" ,function(e) {
+
+    var url = "/comments/id"+$(this).data("id")
+  	$.ajax({
+  		url: url,
+  		type: 'DELETE',
+  		context: this,
+  	  success: function() {
+  	  	$(this).parents('.comment').remove();
+  	  }
+  	});
+  	return false;
+  });
 });
 
