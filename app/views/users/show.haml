@@ -39,9 +39,9 @@
   .info-container
     #dowload-buttons-positioner
       #new-pic-button.download-button
-        = image_tag("/assets/picture.png")
+        = image_tag(asset_path("picture.png"))
       #new-video-button.download-button
-        = image_tag("/assets/tool.png")
+        = image_tag(asset_path("tool.png"))
     #new-pic.new-post
       = form_for PicPost.new(), url: new_pic_post_path, remote: true, multipart: true, method: :post do |form|
         = form.text_field :title, placeholder: "Title"

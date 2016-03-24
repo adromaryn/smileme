@@ -11,11 +11,11 @@
       %nav
         - if user_signed_in?
           %input{type: "text", class: "search"}
-          = link_to image_tag(asset_path("home.png")), current_user
-          = link_to image_tag(asset_path("logout.png")), destroy_user_session_path, method: :delete
+          = link_to image_tag("/assets/home.png"), current_user
+          = link_to image_tag("/assets/logout.png"), destroy_user_session_path, method: :delete
         -else
-          = link_to image_tag(asset_path("login.png")), user_session_path
-          = link_to image_tag(asset_path("signup.png")), new_user_registration_path
+          = link_to image_tag("/assets/login.png"), user_session_path
+          = link_to image_tag("/assets/signup.png"), new_user_registration_path
     %main
       -if notice
         #notice

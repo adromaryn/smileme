@@ -1,4 +1,8 @@
-%span.follow +
+-if @user != current_user
+  -if current_user.following?(@user)
+    %span.unfollow −
+  -else
+    %span.follow +
 .info-container
   -if @user == current_user
     .changeable
@@ -22,6 +26,7 @@
         = text_area_tag :about
         %br/
         = submit_tag "Update about", class: "button-default"
+    = link_to "Your follows: #{@user.follows_by_type('User').length}", follows_path
   -else
     = image_tag @user.avatar.url(:medium)
     %br/
