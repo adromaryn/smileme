@@ -1,0 +1,5 @@
+= will_paginate @follows, id: 'pag1'
+-@follows.each do |follow|
+  - user = User.find(follow.followable_id)
+  = user.login
+= will_paginate @follows, id: 'pag2'

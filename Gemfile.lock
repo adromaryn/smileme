@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_follower (0.2.1)
     angular-rails (0.0.12)
       coffee-script (~> 2.2.0)
       rails
@@ -188,6 +189,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_follower
   angular-rails (= 0.0.12)
   aws-sdk (< 2.0)
   byebug

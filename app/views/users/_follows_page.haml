@@ -1,0 +1,8 @@
+= will_paginate @follows, id: 'pag1'
+- flag = true
+-@follows.each do |follow|
+  - user = User.find(follow.followable_id)
+  %div{class: "user-prev item-#{flag}"}
+    = link_to user.login, user
+  -flag = !flag 
+= will_paginate @follows, id: 'pag2'

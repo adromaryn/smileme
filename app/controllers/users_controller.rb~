@@ -69,26 +69,12 @@ class UsersController < ApplicationController
   end
   
   def follow
-  	if request.xhr?
-  		user = User.find(params[:id])
-  	  current_user.follow(user)
-  	  respond_to do |format|
-        format.js { render nothing: true } 
-      end
-  	end
+  	user = User(params[:id])
+  	current_user.follow(user)
   end
   
   def unfollow
-  	if request.xhr?
-  	  user = User.find(params[:id])
-  	  current_user.stop_following(user)
-  	  respond_to do |format|
-        format.js { render nothing: true } 
-      end
-  	end
-  end
-  
-  def follows
-    @follows = current_user.follows_by_type('User').paginate(page: params[:page], per_page: 10).order('created_at DESC')
+  	user = User(params[:id])
+  	current_user.stop_following(user)
   end
 end

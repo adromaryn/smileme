@@ -1,0 +1,14 @@
+.user-prev{
+  font-size: 20px;
+  &:hover{
+    background-color: #ddf;
+  }
+  a{
+    display: block;
+    padding: 10px;
+  }
+}
+
+.item-true{
+  background-color: #eef;
+}
