@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
   has_many :comments
-  has_attached_file :avatar, styles: { medium: "150x150>", thumb: "70x70>" }, default_url: "/assets/ava-:style.png"
+  has_attached_file :avatar, styles: { medium: "150x150>", thumb: "70x70>" }, default_url: ActionController::Base.helpers.asset_path("ava-#{:style}.png")
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   acts_as_followable
   acts_as_follower
