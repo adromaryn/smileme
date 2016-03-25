@@ -94,6 +94,13 @@ $(document).ready(function(){
       $('.ava-submit').hide();
     }
   });
+  $('#new_pic_post').on("change",".inputfile", function(e) {
+  		var str = $('.inputfile').val();
+  		if (str.length > 15) {
+  			str = str.slice(0,12)+"...";
+  		}
+  		$('.inputfile + label').text(str);
+  });
   	
   if (! $(".pagination a").length) {
   	$(".pagination").hide();
