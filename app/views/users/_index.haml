@@ -1,0 +1,9 @@
+= will_paginate @users, id: 'pag1'
+- flag = true
+-@users.each do |user|
+  %div{class: "user-prev item-#{flag}"}
+    = link_to user.login, user
+  -flag = !flag 
+= will_paginate @users, id: 'pag2'
+- if @users.length == 0
+  %p No such users

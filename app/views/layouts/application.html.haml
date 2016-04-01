@@ -11,6 +11,7 @@
       %nav
         - if user_signed_in?
           %input{type: "text", class: "search"}
+          = link_to image_tag(asset_path("search-medium.png")), search_path
           = link_to image_tag(asset_path("home.png")), current_user
           = link_to image_tag(asset_path("logout.png")), destroy_user_session_path, method: :delete
         -else

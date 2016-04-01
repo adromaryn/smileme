@@ -17,6 +17,8 @@ class SearchController < ApplicationController
   end
   
   def index
+  	login, about = params[:login]||"", params[:about]||""
+  	@users = User.search(login,about).paginate(:page => params[:page]).order('created_at DESC')
   end
 	
 end

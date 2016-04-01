@@ -18,5 +18,19 @@ class User < ActiveRecord::Base
   		self.all
   	end
   end
+  
+  def self.search(login, about)
+  	if login != ""
+  		if about != ""
+  		  self.where("login like ? AND about like ?", "%#{login}%", "%#{about}%")
+  		else
+  			self.where("login like ?", "%#{login}%")
+  		end
+  	elsif about != ""
+  		self.where("about like ?", "%#{about}%")
+  	else
+  		self.all
+  	end
+  end
 
 end

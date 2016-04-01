@@ -1,2 +1,15 @@
 .info-container
-  hello
+  = form_tag '/search', method: :get, remote: true do
+    =label_tag :login, 'Search with login:'
+    %br/
+    =text_field_tag :login
+    %br/
+    =label_tag :about, 'Search with word/phrase in about: '
+    %br/
+    =text_area_tag :about
+    %br/
+    =submit_tag 'Search', class: 'button-default'
+
+#search
+  .info-container
+    =render 'users/index'
