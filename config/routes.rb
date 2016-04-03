@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   get 'users/:id/login' => 'users#get_login'
   post '/users/about' => 'users#about'
   post '/avatar' => 'users#avatar', as: 'avatar', defaults: { format: 'js' }
+  post '/users/:id/follow' => 'users#follow'
+  post '/users/:id/unfollow' => 'users#unfollow'
   
   post 'posts/new_pic' => 'posts#create_pic_post', as: 'new_pic_post', defaults: { format: 'js' }
   post 'posts/new_video' => 'posts#create_video_post', as: 'new_video_post', defaults: { format: 'js' }
   get 'posts/id:id' => 'posts#show', as: 'post'
-  delete '/posts/id:id' => 'posts#destroy'
+  get 'feed' => 'posts#feed', as: 'feed'
   
   post 'posts/id:id' => 'comments#create', as: 'new_comment', defaults: { format: 'js'}
   delete '/comments/id:id' => 'comments#destroy', as: 'comments'
@@ -27,7 +29,6 @@ Rails.application.routes.draw do
   get '/search/quick' => 'search#quick', as: 'qsearch'
   get '/search/' => 'search#index', as: 'search'
   
-  post '/users/:id/follow' => 'users#follow'
-  post '/users/:id/unfollow' => 'users#unfollow'
+  
   get '/follows' => 'users#follows', as: 'follows'
 end

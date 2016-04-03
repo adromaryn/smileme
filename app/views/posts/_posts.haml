@@ -2,7 +2,7 @@
 -for post in @posts
   .post
     .ava-thumb
-      = link_to(image_tag(@user.avatar.url(:thumb)), @user)
+      = link_to(image_tag(post.user.avatar.url(:thumb)), post.user)
     .info-container
       -if post.pic_post
         = link_to post.pic_post.title, post, class: "title"
