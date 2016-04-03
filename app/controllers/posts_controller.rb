@@ -82,7 +82,7 @@ class PostsController < ApplicationController
     follows.each do |follow|
     	user = User.find(follow.followable_id)
     	if posts
-    		posts.merge!(Post.where(user_id: user.id))
+    		posts = posts.merge(Post.where(user_id: user.id))
       else
       	posts = Post.where(user_id: user.id)
       end
