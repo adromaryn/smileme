@@ -23,6 +23,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'will_paginate', '~> 3.0.6'
 gem 'remotipart', '~> 1.2'
 gem 'acts_as_follower'
+gem 'active_record_union'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
