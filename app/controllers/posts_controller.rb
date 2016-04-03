@@ -82,11 +82,10 @@ class PostsController < ApplicationController
     follows.each do |follow|
     	user = User.find(follow.followable_id)
     	if posts
-    		posts.merge(Post.where(user_id: user.id))
+    		posts.merge!(Post.where(user_id: user.id))
       else
       	posts = Post.where(user_id: user.id)
       end
-      puts(posts.class)
     end
     user = User.find(follows.first.followable_id)
   	@posts = posts.paginate(:page => params[:page]).order('created_at DESC')
