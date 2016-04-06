@@ -40,9 +40,6 @@ GEM
       tzinfo (~> 1.1)
     acts_as_follower (0.2.1)
     acts_as_votable (0.10.0)
-    angular-rails (0.0.12)
-      coffee-script (~> 2.2.0)
-      rails
     arel (6.0.3)
     aws-sdk (1.66.0)
       aws-sdk-v1 (= 1.66.0)
@@ -201,7 +198,6 @@ DEPENDENCIES
   active_record_union
   acts_as_follower
   acts_as_votable (~> 0.10.0)
-  angular-rails (= 0.0.12)
   aws-sdk (< 2.0)
   byebug
   coffee-rails (~> 4.1.0)
