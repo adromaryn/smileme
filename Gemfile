@@ -15,7 +15,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '3.5.3'
 gem 'haml', '4.0.7'
-gem 'angular-rails', '0.0.12'
 gem 'haikunator'
 gem "paperclip", "~> 4.3"
 gem 'conred'
