@@ -67,11 +67,17 @@ pre {
   color: green;
   background-color: #dfd;
   border-left: 20px solid #2c2;
+  width: 600px;
+  margin:5px auto;
 }
 
 #error {
   background-color: #fdd;
   border-left: 20px solid #c22;
+}
+
+#error-post {
+  color:red;
 }
 
 #error_explanation, #notice, #error{
@@ -157,11 +163,14 @@ header{
   padding:10px;
   margin:10px auto;
   width:400px;
-  h1{
-    color: white;
+  h1, h3{
     text-shadow: -1px 0 #aaa, 0 1px #aaa, 1px 0 #aaa, 0 -1px #aaa;
+  }
+  
+  h1 {
     font-size:30px;
   }
+  
   form{
     .field{
       width:400px;
@@ -173,7 +182,7 @@ header{
       }
     }
   }
-  a, p, label, em{
+  a, p, label, em, i, h1, h3{
     color:white;
   }
 }

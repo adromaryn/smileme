@@ -10,3 +10,9 @@ while (pag.search("posts/new_pic") != -1) {
   pag = pag.replace("posts/new_pic", "users/<%= @user.id %>");
 }
 $("#pag2").html(pag);
+  
+<% if flash[:post_error] %>
+  $('#error-post').html("<%= flash[:post_error] %>");
+  setTimeout("$('#error-post').html('');", 5000);
+<% end %>
+  

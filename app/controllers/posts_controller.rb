@@ -12,9 +12,9 @@ class PostsController < ApplicationController
       @pic_post.save
     else
     	if @pic_post.title.length < 1 || @pic_post.title.length > 200
-    		#flash[:error] = "The title cannot be fill or longer then 200 chars"
+    		flash.now[:post_error] = "The title cannot be fill or longer then 200 chars"
     	else
-    		#flash[:error] = "You should attach picture to the post"
+    		flash.now[:post_error] = "You should attach picture to the post"
     	end
     end
     respond_to do |format|
@@ -34,9 +34,9 @@ class PostsController < ApplicationController
       @video_post.save
     else
     	if @video_post.title.length < 1 || @video_post.title.length > 200
-    		#flash[:error] = "The title cannot be fill or longer then 200 chars"
+    		flash.now[:post_error] = "The title cannot be fill or longer then 200 chars"
     	else
-    		#flash[:error] = "You should attach youtube or vimeo video to the post"
+    		flash.now[:post_error] = "You should attach youtube or vimeo video to the post"
     	end
     end
     respond_to do |format|

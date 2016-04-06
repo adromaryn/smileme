@@ -29,6 +29,8 @@
     = link_to "Your follows: #{@user.follows_by_type('User').length}", follows_path
     %br/
     = link_to "Your feed", feed_path
+    %br/
+    = link_to "Change reg. data", edit_user_registration_path
   -else
     = image_tag @user.avatar.url(:medium)
     %br/
@@ -62,5 +64,8 @@
         = form.text_field :definition, placeholder: "definition"
         %br/
         = form.submit "Post", class: "button-default"
+    #error-post
+      -if flash[:post_error]
+        = flash[:post_error]
 #posts
   = render 'posts/posts'
