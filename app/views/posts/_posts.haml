@@ -1,31 +1,35 @@
 = will_paginate @posts, id: 'pag1'
--for post in @posts
+-for @post in @posts
   .post
     .ava-thumb
-      = link_to(image_tag(post.user.avatar.url(:thumb)), post.user)
+      = link_to(image_tag(@post.user.avatar.url(:thumb)), @post.user)
     .info-container
-      -if post.pic_post
-        = link_to post.pic_post.title, post, class: "title"
+      -if @post.pic_post
+        = link_to @post.pic_post.title, @post, class: "title"
         %br/
-        = image_tag post.pic_post.image.url(:medium)
+        = image_tag @post.pic_post.image.url(:medium)
         %br/
-        -if post.pic_post.definition != ""
+        -if @post.pic_post.definition != ""
           %pre
-            = post.pic_post.definition
+            = @post.pic_post.definition
           %br/
-      -if post.video_post
-        - c = Conred::Video.new(video_url: post.video_post.link, width: 285, height: 185,error_message: "Video url is invalid")
-        = link_to post.video_post.title, post, class: "title"
+      -if @post.video_post
+        - c = Conred::Video.new(video_url: @post.video_post.link, width: 285, height: 185,error_message: "Video url is invalid")
+        = link_to @post.video_post.title, @post, class: "title"
         %br/
         = c.code.html_safe
         %br/
-        -if post.video_post.definition != ""
+        -if @post.video_post.definition != ""
           %p 
-            = post.video_post.definition
+            = @post.video_post.definition
           %br/
       %i
-        = post.created_at.to_formatted_s :db
+        = @post.created_at.to_formatted_s :db
       %br/
       -if @user == current_user
-        %em.close{data: {id: post.id}} ×
+        %em.close{data: {id: @post.id}} ×
+        = render 'posts/like_rate'
+      -else 
+        %div{class: "like_menu like_menu-#{@post.id}"}
+          = render 'posts/like_menu'
 = will_paginate @posts, id: 'pag2'

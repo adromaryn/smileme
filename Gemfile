@@ -24,6 +24,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'remotipart', '~> 1.2'
 gem 'acts_as_follower'
 gem 'active_record_union'
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

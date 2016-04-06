@@ -90,6 +90,30 @@ class PostsController < ApplicationController
     user = User.find(follows.first.followable_id)
   	@posts = posts.paginate(:page => params[:page]).order('created_at DESC')
   end
+  
+  def like
+  	@post = Post.find(params[:id])
+  	if current_user.voted_up_on? @post
+  		@post.unliked_by current_user
+  	else
+  	  @post.liked_by current_user
+  	end
+  	respond_to do |format|
+      format.js {render file: '/posts/likes.js.erb'}
+    end
+  end
+  
+  def dislike
+  	@post = Post.find(params[:id])
+  	if current_user.voted_down_on? @post
+  		@post.undisliked_by current_user
+  	else
+  	  @post.disliked_by current_user
+  	end
+  	respond_to do |format|
+      format.js {render file: '/posts/likes.js.erb'}
+    end
+  end
 
   private
 

@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
 	has_one :video_post
 	has_many :comments
 	self.per_page = 10
+	acts_as_votable
 end

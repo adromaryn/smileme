@@ -1,0 +1,12 @@
+-if @post.get_likes.size - @post.get_dislikes.size > 0
+  %span.liked Rate:
+  %span.liked 
+    = @post.get_likes.size - @post.get_dislikes.size
+-elsif @post.get_likes.size - @post.get_dislikes.size < 0
+  %span.disliked Rate:
+  %span.disliked 
+    = @post.get_likes.size - @post.get_dislikes.size
+-else
+  %span.like_rate Rate:
+  %span.like_rate
+    = @post.get_likes.size - @post.get_dislikes.size

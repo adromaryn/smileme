@@ -24,6 +24,10 @@
         %br/
     -if @post.user == current_user
       = link_to 'Delete', @post, method: :delete
+      = render 'posts/like_rate'
+    -else
+      %div{class: "like_menu like_menu-#{@post.id}"}
+        = render 'like_menu'
       
 .info-container
   = form_for @comment, url: post_path(@post), remote: true do |f|

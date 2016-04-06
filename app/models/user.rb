@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   acts_as_followable
   acts_as_follower
+  acts_as_voter
   self.per_page = 10
   
   def self.quick_search(search)

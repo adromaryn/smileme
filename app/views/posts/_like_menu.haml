@@ -1,0 +1,10 @@
+-if current_user.voted_up_on? @post
+  = link_to image_tag(asset_path("like.png")), like_path(@post)
+-else
+  = link_to image_tag(asset_path("like.png")), like_path(@post), class: 'like-inactive'
+-if current_user.voted_down_on? @post
+  = link_to image_tag(asset_path("dislike.png")), dislike_path(@post)
+-else
+  = link_to image_tag(asset_path("dislike.png")), dislike_path(@post), class: 'like-inactive'
+%br/
+= render 'posts/like_rate'

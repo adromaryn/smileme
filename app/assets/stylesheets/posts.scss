@@ -95,3 +95,19 @@ span.close{
   color: #666;
   cursor: pointer;
 }
+
+.like-inactive img{
+  opacity: 0.5;
+}
+
+.liked, .disliked, .like_rate{
+  font-size: 16px;
+}
+
+.liked {
+  color: green;
+}
+
+.disliked {
+  color: red;
+}

@@ -7,4 +7,8 @@ $(document).ready(function(){
 				$.get(this.href, null, null, 'script');
 				return false;
     });
+    $('#posts').on("click", '.like_menu a', function () {
+				$.post(this.href, null, null, 'script');
+				return false;
+    });
 });
