@@ -1,6 +1,6 @@
 # Smileme tumblelog
 
-It's a simple tumblelog
+It's a simple tumblelog.
 2 type of posts: *picture* or *video* with vimeo or youtube link.
 Follows and feed, comments, likes/dislikes.
 
