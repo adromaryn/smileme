@@ -31,21 +31,29 @@ gem 'acts_as_votable', '~> 0.10.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :test do
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.2.0'
+  gem 'webmock'
+end
+
 group :development do
   # Use Capistrano for deployment
   # gem 'capistrano-rails'
   gem 'erb2haml'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rspec-rails', '3.4.2'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec', '4.6.0'
+  gem 'spring-commands-rspec'
+  gem 'vcr'
 end
+
 group :production do
   gem 'rails_12factor', '0.0.3'
 end
