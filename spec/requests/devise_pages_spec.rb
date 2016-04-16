@@ -50,4 +50,28 @@ describe "Devise pages" do
       end
     end
   end
+  
+  describe "signin" do
+  	subject { page }
+    before { visit new_user_session_path }
+
+    describe "with invalid information" do
+      before { click_button "Log in" }
+
+      it { should have_selector("h1", text: "Log in") }
+    end
+    
+    describe "with valid information" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Email",    with: user.email
+        fill_in "Password", with: user.password
+        click_button "Log in"
+      end
+      
+      it { should have_selector("#login-text", text: "#{user.login}")}
+      it { should have_selector("#login-form", text: "")}
+    end
+  end
+  
 end
