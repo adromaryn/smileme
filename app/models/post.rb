@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
 	belongs_to :user
 	has_one :pic_post
 	has_one :video_post

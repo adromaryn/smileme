@@ -1,9 +1,13 @@
-development:
+default: &default
   adapter: postgresql
-  encoding: utf8
-  database: smile_development
-  username: adromaryn
-  password: 111111
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: smile_dev
+  username: <%= ENV.fetch("PG_USER") %>
+  password: <%= ENV.fetch("PG_PASS") %>
   host: localhost
   port: 5432
 
@@ -11,7 +15,14 @@ test:
   adapter: postgresql
   encoding: utf8
   database: smile_test
-  username: adromaryn
-  password: 111111
+  username: <%= ENV.fetch("PG_USER") %>
+  password: <%= ENV.fetch("PG_PASS") %>
   host: localhost
   port: 5432
+  
+production:
+  <<: *default
+  database: smile
+  username: a123
+  username: <%= ENV.fetch("PG_USER") %>
+  password: <%= ENV.fetch("PG_PASS") %>

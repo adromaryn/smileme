@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def create_video_post
   	@post = Post.new
   	@post.user = current_user
-    @video_post = VideoPost.new( video_post_params)
+    @video_post = VideoPost.new(video_post_params)
     @user = current_user
     @posts = current_user.posts.paginate(:page => params[:page]).order('created_at DESC')
     if @video_post.valid?
@@ -121,10 +121,10 @@ class PostsController < ApplicationController
   # Be sure to update your create() and update() controller methods.
 
   def pic_post_params
-    params.require(:pic_post).permit(:title, :image, :definition)
+    params.require(:pic_post).permit(:title, :image, :definition).to_h
   end
   
   def video_post_params
-    params.require(:video_post).permit(:title, :link, :definition)
+    params.require(:video_post).permit(:title, :link, :definition).to_h
   end
 end
