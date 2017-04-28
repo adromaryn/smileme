@@ -15,7 +15,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '2.6.3'
 gem 'sdoc', '0.4.2', group: :doc
 gem 'devise', '4.2.1'
-gem 'haml-rails', '0.9.0'
+gem 'haml', '5.0.0'
 gem 'haikunator', '1.1.0'
 gem "paperclip", '5.1.0'
 gem 'conred', '0.5.0'

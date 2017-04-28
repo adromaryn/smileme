@@ -1,4 +1,4 @@
-class CreatePicPosts < ActiveRecord::Migration
+class CreatePicPosts < ActiveRecord::Migration[5.1]
   def change
     create_table :pic_posts do |t|
       t.string :definition

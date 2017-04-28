@@ -1,4 +1,4 @@
-class AddAboutToUsers < ActiveRecord::Migration
+class AddAboutToUsers < ActiveRecord::Migration[5.1]
   def change
     add_column :users, :about, :text
   end
